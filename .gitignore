@@ -1,0 +1,12 @@
+// filepath: .gitignore
+/config/odoo.conf
+/odoo_pg_pass
+/odoo_pg_passQfEmmk%aD94GM:XYEp
+
+/odoo_pg_user
+/odoo_pg_db
+/odoo_pg_host
+/odoo_pg_port
+/odoo_pg_password
+/odoo_pg_user
+/odoo_pg_db
