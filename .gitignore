@@ -1,8 +1,15 @@
-// filepath: .gitignore
+# .gitignore
+
+# Ignore Odoo configuration file
 /config/odoo.conf
+
+# Ignore PostgreSQL password file
 /odoo_pg_pass
+
+# Ignore PostgreSQL password (example)
 /odoo_pg_passQfEmmk%aD94GM:XYEp
 
+# Ignore PostgreSQL user, db, host, port, and password
 /odoo_pg_user
 /odoo_pg_db
 /odoo_pg_host
@@ -10,3 +17,7 @@
 /odoo_pg_password
 /odoo_pg_user
 /odoo_pg_db
+
+# Environment variable files
+.env
+!.env.example
