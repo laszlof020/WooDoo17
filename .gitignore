@@ -19,5 +19,4 @@
 /odoo_pg_db
 
 # Environment variable files
-.env
-!.env.example
+/.env
