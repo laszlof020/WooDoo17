@@ -1,0 +1,49 @@
+services:
+  web:
+    image: nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl/server.crt:/etc/ssl/certs/server.crt:ro
+      - ./ssl/server.key:/etc/ssl/certs/server.key:ro
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - odoo
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: WooDoo17-dtbs
+
+      POSTGRES_USER: WooDoo17
+      POSTGRES_PASSWORD: QfEmmk%aD94GM:XYEp
+
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data
+    secrets:
+      - postgresql_password
+
+  odoo:
+    image: odoo:17
+    depends_on:
+      - db
+    environment:
+      HOST: db
+      USER: your_db_user
+      PASSWORD: your_db_password
+      DB: your_db_name
+    volumes:
+      - odoo-web-data:/var/lib/odoo
+      - ./addons:/mnt/extra-addons
+      - ./config/odoo.conf:/etc/odoo/odoo.conf
+    ports:
+      - "8069:8069"
+
+volumes:
+  odoo-web-data:
+  odoo-db-data:
+
+secrets:
+  postgresql_password:
+    file: odoo_pg_pass
